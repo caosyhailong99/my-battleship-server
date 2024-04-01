@@ -8,10 +8,19 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+var {Server} = require('socket.io');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+
+var io = new Server({});
+
+io.on('connection', () => {
+  console.log('Ok');
+});
+
+io.listen(4200);
 
 app.use(logger('dev'));
 app.use(express.json());
