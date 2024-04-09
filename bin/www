@@ -25,10 +25,8 @@ var io = require('socket.io')(server, {
 });
 
 io.on('connection', (socket) => {
-  let islandCoordination = {x: 5, y: 5};
   socket.on('send-coordination', (coordination) => {
-    if(coordination.x === islandCoordination.x && coordination.y === islandCoordination.y)
-      socket.emit('hit-the-island', islandCoordination);
+      socket.broadcast.emit('broadcast-coordination', coordination);
   });
 });
 
