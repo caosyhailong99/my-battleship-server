@@ -28,6 +28,9 @@ io.on('connection', (socket) => {
   socket.on('send-coordination', (coordination) => {
       socket.broadcast.emit('broadcast-coordination', coordination);
   });
+  socket.on('target-hit', (coordination) => {
+    socket.emit('target-hit', coordination);
+  });
 });
 
 /**
