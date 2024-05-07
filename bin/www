@@ -26,10 +26,12 @@ var io = require("socket.io")(server, {
 
 io.on("connection", (socket) => {
   socket.on("send-coordination", (coordination) => {
+    console.log('send-coordination')
     socket.broadcast.emit("broadcast-coordination", coordination);
   });
   socket.on("target-hit", (coordination) => {
-    socket.broadcast.emit("target-hit", coordination);
+    console.log('target-hit');
+    socket.broadcast.emit("target-hit-response", coordination);
   });
 });
 
