@@ -33,6 +33,9 @@ io.on("connection", (socket) => {
     console.log('target-hit');
     socket.broadcast.emit("target-hit-response", coordination);
   });
+  socket.on("ship-sink", (shipName) => {
+    socket.broadcast.emit('target-ship-sink', shipName);
+  });
 });
 
 /**
